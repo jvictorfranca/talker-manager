@@ -1,4 +1,3 @@
-// eslint-disable-next-line max-lines-per-function
 module.exports = (req, res, next) => {
   const { email } = req.body;
   console.log(email);
