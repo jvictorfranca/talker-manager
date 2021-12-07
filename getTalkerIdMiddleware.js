@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-module.exports = (req, res, next) => {
+module.exports = (req, res) => {
   const data = JSON.parse(fs.readFileSync('./talker.json', 'utf8'));
   const { id } = req.params;
   const personId = data.find((person) => person.id === parseInt(id, 10));
