@@ -14,6 +14,7 @@ const validateRate = require('./validateRate');
 const validateTalk = require('./validateTalk');
 const putTalkerIdMiddleware = require('./putTalkerIdMiddleware');
 const deleteTalkerIdMiddleware = require('./deleteTalkerIdMiddleware');
+const getSearchMiddleware = require('./getSearchMiddleware');
 
 const app = express();
 app.use(bodyParser.json());
@@ -27,6 +28,11 @@ app.get('/', (_request, response) => {
 });
 
 app.get('/talker', getTalkerMiddleware);
+
+app.get('/talker/search',
+  validateToken,
+  getSearchMiddleware);
+
 app.get('/talker/:id', getTalkerIdMiddleware);
 app.post('/login', validateEmail, validatePassword, postLoginMiddleware);
 app.post('/talker',
