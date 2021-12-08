@@ -8,8 +8,8 @@ module.exports = (req, res, next) => {
     ...newTalker,
     id: parseInt(id, 10),
   };
-  const beforeData = data.filter((person) => person.id < id);
-  const afterData = data.filter((person) => person.id > id);
+  const beforeData = data.filter((person) => person.id < parseInt(id, 10));
+  const afterData = data.filter((person) => person.id > parseInt(id, 10));
   const newData = [...beforeData, newTalker, ...afterData];
   fs.writeFileSync('./talker.json', JSON.stringify(newData));
   console.log(newData);
